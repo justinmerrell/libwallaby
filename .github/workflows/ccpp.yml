@@ -9,12 +9,7 @@ jobs:
     
     steps:
     #- uses: actions/checkout@v2
-    
-    - name: Download Repository and Enter it
-      run: 
-        git clone https://github.com/kipr/libwallaby &&
-        cd libwallaby
-        
+             
     - name: Build the Project (Initial Compile)
       run: 
         mkdir build &&
