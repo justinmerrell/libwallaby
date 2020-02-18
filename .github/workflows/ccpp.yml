@@ -12,22 +12,22 @@ jobs:
     
     - name: Download Repository and Enter it
       run: 
-        git clone https://github.com/kipr/libwallaby
+        git clone https://github.com/kipr/libwallaby &&
         cd libwallaby
         
     - name: Build the Project (Initial Compile)
       run: 
-        mkdir build
-        cd build
-        cmake ..
+        mkdir build &&
+        cd build &&
+        cmake .. &&
         make -j4
         
     - name: Create .deb file
       run:
-        cd ../..
-        tar -zcvf libwallaby.tar.gz libwallaby
-        cp libwallaby.tar.gz libwallaby
-        cd libwallaby
+        cd ../.. &&
+        tar -zcvf libwallaby.tar.gz libwallaby &&
+        cp libwallaby.tar.gz libwallaby &&
+        cd libwallaby &&
         dpkg-buildpackage -b -rfakeroot -us -uc
         
     - name: Upload .deb to KIPR-Update
