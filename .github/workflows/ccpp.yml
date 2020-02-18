@@ -12,8 +12,9 @@ jobs:
            
     - name: Setup Enviroment
       run: 
+        sudo rm -r /home/pi/got2 &&
+        mkdir /home/pi/got2 &&
         cd /home/pi/got2 &&
-        sudo rm -r * &&
         git clone https://github.com/kipr/libwallaby &&
         cd libwallaby
         
