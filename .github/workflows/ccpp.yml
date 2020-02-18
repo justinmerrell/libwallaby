@@ -15,11 +15,11 @@ jobs:
         sudo rm -r /home/pi/got2 &&
         mkdir /home/pi/got2 &&
         cd /home/pi/got2 &&
-        git clone https://github.com/kipr/libwallaby &&
-        cd libwallaby
+        git clone https://github.com/kipr/libwallaby 
         
     - name: Build the Project (Initial Compile)
       run: 
+        cd /home/pi/got2/libwallaby &&
         mkdir build &&
         cd build &&
         cmake .. &&
@@ -27,7 +27,7 @@ jobs:
         
     - name: Create .deb file
       run: echo test
-        cd ../.. &&
+        cd /home/pi/got2 &&
         tar -zcvf libwallaby.tar.gz libwallaby &&
         cp libwallaby.tar.gz libwallaby &&
         cd libwallaby &&
