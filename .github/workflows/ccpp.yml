@@ -14,7 +14,7 @@ jobs:
       run: 
         cd /home/pi/got2 &&
         sudo rm -r * &&
-        git clone https://github.com/libwallaby &&
+        git clone https://github.com/kipr/libwallaby &&
         cd libwallaby
         
     - name: Build the Project (Initial Compile)
