@@ -1,0 +1,13 @@
+name: C/C++ CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: [self-hosted, linux]
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: testing
+      run: ls
