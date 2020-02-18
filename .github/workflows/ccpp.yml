@@ -12,6 +12,7 @@ jobs:
              
     - name: Build the Project (Initial Compile)
       run: 
+        rm -r build &&
         mkdir build &&
         cd build &&
         cmake .. &&
