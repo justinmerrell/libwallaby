@@ -9,22 +9,28 @@ jobs:
     
     steps:
     #- uses: actions/checkout@v2
-             
+           
+    - name: Setup Enviroment
+      run: 
+        cd /home/pi/got2 &&
+        sudo rm -r * &&
+        git clone https://github.com/libwallaby &&
+        cd libwallaby
+        
     - name: Build the Project (Initial Compile)
-      run: ls && cd .. && ls
-        #rm -r build &&
-        #mkdir build &&
-        #cd build &&
-        #cmake .. &&
-        #make -j4
+      run: 
+        mkdir build &&
+        cd build &&
+        cmake .. &&
+        make -j4
         
     - name: Create .deb file
       run: echo test
-        #cd ../.. &&
-        #tar -zcvf libwallaby.tar.gz libwallaby &&
-        #cp libwallaby.tar.gz libwallaby &&
-        #cd libwallaby &&
-        #dpkg-buildpackage -b -rfakeroot -us -uc
+        cd ../.. &&
+        tar -zcvf libwallaby.tar.gz libwallaby &&
+        cp libwallaby.tar.gz libwallaby &&
+        cd libwallaby &&
+        dpkg-buildpackage -b -rfakeroot -us -uc
         
     - name: Upload .deb to KIPR-Update
       run:
