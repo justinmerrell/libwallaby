@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: BobTheBuilder
 
 on: [push]
 
@@ -8,6 +8,35 @@ jobs:
     runs-on: [self-hosted, linux]
     
     steps:
-    - uses: actions/checkout@v2
-    - name: testing
-      run: ls
+    #- uses: actions/checkout@v2
+    
+    - name: Download Repository and Enter it
+      run: 
+        git clone https://github.com/kipr/libwallaby
+        cd libwallaby
+        
+    - name: Build the Project (Initial Compile)
+      run: 
+        mkdir build
+        cd build
+        cmake ..
+        make -j4
+        
+    - name: Create .deb file
+      run:
+        cd ../..
+        tar -zcvf libwallaby.tar.gz libwallaby
+        cp libwallaby.tar.gz libwallaby
+        cd libwallaby
+        dpkg-buildpackage -b -rfakeroot -us -uc
+        
+    - name: Upload .deb to KIPR-Update
+      run:
+        echo Not yet implemented.
+        #This code should upload but test it first.
+        #git clone https://github.com/kipr/KIPR-Update
+        #cp *.deb KIPR-Update
+        #cd KIPR-Update
+        #git add *.deb
+        #git commit -m "Automated Commit: Libwallaby"
+        #git push origin master
