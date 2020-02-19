@@ -35,7 +35,7 @@ jobs:
       run: 
         cd /home/pi/got2 &&
         tar -zcvf libwallaby.tar.gz libwallaby &&
-        cp libwallaby.tar.gz libwallaby &&
+        cp libwallaby.tar.gz libwallaby 
         
     #Builds everything into a .deb file using dpkg-buildpackage
     - name: Create .deb file
