@@ -39,7 +39,7 @@ jobs:
         
     #Builds everything into a .deb file using dpkg-buildpackage
     - name: Create .deb file
-      run: echo test
+      run:
         cd /home/pi/got2/libwallaby &&
         dpkg-buildpackage -b -rfakeroot -us -uc
         
