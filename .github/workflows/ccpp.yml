@@ -25,10 +25,8 @@ jobs:
     #I know that the actions/checkout@v2 function is SUPPOSED to do this... Doesn't work on the Wombat.
     - name: Get libwallaby from github
       run: 
-        #Make sure we are in a clean enviroment
         sudo rm -r /home/pi/got2 && 
         mkdir /home/pi/got2 &&
-        #Get the repository
         cd /home/pi/got2 &&
         git clone https://github.com/kipr/libwallaby 
         
