@@ -1,6 +1,16 @@
+#BobTheBuilder
+#Author: Zachary Sasser (KISS Institute for Practical Robotics)
+#
+#This program builds the debian files upon push to master.
+
 name: BobTheBuilder
 
-on: [push]
+on:
+  push:
+    # Sequence of patterns matched against refs/heads
+    branches:    
+      - master         # Push events on master branch
+      - Zacharyprime-WorkflowTesting #Push events on my testing branch
 
 jobs:
   build:
@@ -8,29 +18,30 @@ jobs:
     runs-on: [self-hosted, linux]
     
     steps:
-    #- uses: actions/checkout@v2
+    #- uses: actions/checkout@v2 (BROKEN?)
            
-    - name: Setup Enviroment
+    #I know that the actions/checkout@v2 function is SUPPOSED to do this... Doesn't work on the Wombat.
+    - name: Get libwallaby from github
       run: 
-        sudo rm -r /home/pi/got2 &&
+        #Make sure we are in a clean enviroment
+        sudo rm -r /home/pi/got2 && 
         mkdir /home/pi/got2 &&
+
+        #Get the repository
         cd /home/pi/got2 &&
         git clone https://github.com/kipr/libwallaby 
         
-    - name: Build the Project (Initial Compile)
+    #Setup the enviroment for the package to be created.
+    - name: Setup Enviroment
       run: 
-        cd /home/pi/got2/libwallaby &&
-        mkdir build &&
-        cd build &&
-        cmake .. &&
-        make -j4
-        
-    - name: Create .deb file
-      run: echo test
         cd /home/pi/got2 &&
         tar -zcvf libwallaby.tar.gz libwallaby &&
         cp libwallaby.tar.gz libwallaby &&
-        cd libwallaby &&
+        
+    #Builds everything into a .deb file using dpkg-buildpackage
+    - name: Create .deb file
+      run: echo test
+        cd /home/pi/got2/libwallaby &&
         dpkg-buildpackage -b -rfakeroot -us -uc
         
     - name: Upload .deb to KIPR-Update
@@ -41,5 +52,5 @@ jobs:
         #cp *.deb KIPR-Update
         #cd KIPR-Update
         #git add *.deb
-        #git commit -m "Automated Commit: Libwallaby"
+        #git commit -m "Automated Commit: libwallaby"
         #git push origin master
