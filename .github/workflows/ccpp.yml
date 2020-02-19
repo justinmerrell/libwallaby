@@ -26,7 +26,6 @@ jobs:
         #Make sure we are in a clean enviroment
         sudo rm -r /home/pi/got2 && 
         mkdir /home/pi/got2 &&
-
         #Get the repository
         cd /home/pi/got2 &&
         git clone https://github.com/kipr/libwallaby 
