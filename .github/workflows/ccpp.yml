@@ -1,9 +1,11 @@
+
+
+name: BobTheBuilder
+
 #BobTheBuilder
 #Author: Zachary Sasser (KISS Institute for Practical Robotics)
 #
 #This program builds the debian files upon push to master.
-
-name: BobTheBuilder
 
 on:
   push:
