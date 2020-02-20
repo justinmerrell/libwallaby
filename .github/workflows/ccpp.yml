@@ -60,6 +60,9 @@ jobs:
         git remote set-url origin git@github.com:kipr/KIPR-Update.git &&
         ssh-add /home/pi/.ssh/id_rsa
         
+    - name: Open silent ssh client and add keys
+      run: 
+          eval $(ssh-agent -s) && ssh-add /home/pi/.ssh/id_rsa
     - name: Produce Github Repo
       run:
         git push origin master
