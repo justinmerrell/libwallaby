@@ -50,8 +50,10 @@ jobs:
     #Upload everything to github (note that the push is the last operation to prevent uploading bad things)
     - name: Upload .deb to KIPR-Update
       run:
+        cd /home/pi/got2 &&
+        sudo rm -r KIPR-Update &&
         git clone https://github.com/kipr/KIPR-Update &&
-        cp *.deb KIPR-Update/pkgs &&
+        cp libwallaby*.deb KIPR-Update/pkgs &&
         cd KIPR-Update &&
         git init &&
         git add . &&
