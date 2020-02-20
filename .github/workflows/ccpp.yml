@@ -40,12 +40,14 @@ jobs:
       run:
         cd /home/pi/got2/libwallaby &&
         dpkg-buildpackage -b -rfakeroot -us -uc -j4
-        
+    
+    #Change the default output of the builder to a standard libwallaby.deb
     - name: Fix filename
       run: 
         cd /home/pi/got2 &&
         mv *.deb libwallaby.deb
-        
+    
+    #Upload everything to github (note that the push is the last operation to prevent uploading bad things)
     - name: Upload .deb to KIPR-Update
       run:
         git clone https://github.com/kipr/KIPR-Update &&
@@ -53,7 +55,6 @@ jobs:
         cd KIPR-Update &&
         git init &&
         git add . &&
-        git remote add origin git@github.com:kipr/KIPR-Update &&
         git commit -m "Automated Commit - Libwallaby" &&
         git remote set-url origin git@github.com:kipr/KIPR-Update.git &&
         git push origin master
