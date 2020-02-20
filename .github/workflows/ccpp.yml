@@ -48,7 +48,7 @@ jobs:
         mv *.deb libwallaby.deb
     
     #Upload everything to github (note that the push is the last operation to prevent uploading bad things)
-    - name: Upload .deb to KIPR-Update
+    - name: Produce Github Repo
       run:
         cd /home/pi/got2 &&
         git clone https://github.com/kipr/KIPR-Update &&
@@ -60,6 +60,9 @@ jobs:
         git remote set-url origin git@github.com:kipr/KIPR-Update.git &&
         eval $(ssh-agent) &&
         ssh-add /home/pi/.ssh/id_rsa &&
+        
+    - name: Produce Github Repo
+      run:
         git push origin master
 
 
