@@ -39,7 +39,7 @@ jobs:
     - name: Create .deb file
       run:
         cd /home/pi/got2/libwallaby &&
-        dpkg-buildpackage -b -rfakeroot -us -uc
+        dpkg-buildpackage -b -rfakeroot -us -uc -j4
         
     - name: Fix filename
       run: 
