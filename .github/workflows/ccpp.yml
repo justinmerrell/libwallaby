@@ -48,15 +48,15 @@ jobs:
         
     - name: Upload .deb to KIPR-Update
       run:
-        git clone https://github.com/kipr/KIPR-Update
-        cp *.deb KIPR-Update/pkgs
-        cd KIPR-Update
-        git init
-        git add .
-        git remote add origin git@github.com:kipr/KIPR-Update
-        git commit -m "Automated Commit: Libwallaby"
-        git remote set-url origin git@github.com:kipr/KIPR-Update.git
-        git push origin master 
+        git clone https://github.com/kipr/KIPR-Update &&
+        cp *.deb KIPR-Update/pkgs &&
+        cd KIPR-Update &&
+        git init &&
+        git add . &&
+        git remote add origin git@github.com:kipr/KIPR-Update &&
+        git commit -m "Automated Commit: Libwallaby" &&
+        git remote set-url origin git@github.com:kipr/KIPR-Update.git &&
+        git push origin master &&
 
 
 
