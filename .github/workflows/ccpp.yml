@@ -51,7 +51,6 @@ jobs:
     - name: Upload .deb to KIPR-Update
       run:
         cd /home/pi/got2 &&
-        sudo rm -r KIPR-Update &&
         git clone https://github.com/kipr/KIPR-Update &&
         cp libwallaby*.deb KIPR-Update/pkgs &&
         cd KIPR-Update &&
