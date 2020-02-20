@@ -43,13 +43,23 @@ jobs:
         cd /home/pi/got2/libwallaby &&
         dpkg-buildpackage -b -rfakeroot -us -uc
         
+    - name: Fix filename
+      run: 
+        cd /home/pi/got2 &&
+        mv *.deb libwallaby.deb
+        
     - name: Upload .deb to KIPR-Update
       run:
-        echo Not yet implemented.
-        #This code should upload but test it first.
-        #git clone https://github.com/kipr/KIPR-Update
-        #cp *.deb KIPR-Update
-        #cd KIPR-Update
-        #git add *.deb
-        #git commit -m "Automated Commit: libwallaby"
-        #git push origin master
+        git clone https://github.com/kipr/KIPR-Update
+        cp *.deb KIPR-Update/pkgs
+        cd KIPR-Update
+        git init
+        git add .
+        git remote add origin git@github.com:kipr/KIPR-Update
+        git commit -m "Automated Commit: Libwallaby"
+        git remote set-url origin git@github.com:kipr/KIPR-Update.git
+        git push origin master 
+
+
+
+        
