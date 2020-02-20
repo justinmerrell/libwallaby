@@ -56,7 +56,7 @@ jobs:
         git remote add origin git@github.com:kipr/KIPR-Update &&
         git commit -m "Automated Commit - Libwallaby" &&
         git remote set-url origin git@github.com:kipr/KIPR-Update.git &&
-        git push origin master &&
+        git push origin master
 
 
 
