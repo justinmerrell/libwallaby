@@ -58,6 +58,8 @@ jobs:
         git add . &&
         git commit -m "Automated Commit - Libwallaby" &&
         git remote set-url origin git@github.com:kipr/KIPR-Update.git &&
+        eval $(ssh-agent) &&
+        ssh-add /home/pi/.ssh/id_rsa &&
         git push origin master
 
 
