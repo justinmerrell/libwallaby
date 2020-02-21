@@ -53,18 +53,7 @@ jobs:
         cd /home/pi/got2 &&
         git clone https://github.com/kipr/KIPR-Update &&
         cp libwallaby*.deb KIPR-Update/pkgs &&
-        cd KIPR-Update &&
-        git init &&
-        git add . &&
-        git commit -m "Automated Commit - Libwallaby" &&
-        git remote set-url origin git@github.com:kipr/KIPR-Update.git 
-        
-    - name: Open silent ssh client and add keys
-      run: 
-          eval $(ssh-agent -s) && ssh-add /home/pi/.ssh/id_rsa
-    - name: Produce Github Repo
-      run:
-        git push origin master
+        sudo sh /home/pi/uploadUpdates.sh
 
 
 
