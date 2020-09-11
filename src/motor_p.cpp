@@ -98,7 +98,8 @@ int get_motor_bemf(unsigned int port, unsigned char * alt_read_buffer)
 {
   if (port >= NUM_MOTORS) return 0;
   int val = Private::Wallaby::instance()->readRegister32b(REG_RW_MOT_0_B3 + 4 * port, alt_read_buffer);
-  return per_tick_large_to_small(val); // TODO: cleaner place for scaling
+  //return per_tick_large_to_small(val); // TODO: cleaner place for scaling
+  return val;
 }
 
 int get_motor_bemf_vel(unsigned int port, unsigned char * alt_read_buffer)

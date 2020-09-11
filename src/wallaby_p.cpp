@@ -259,12 +259,19 @@ unsigned int Wallaby::readRegister32b(unsigned char address, const unsigned char
 
 	std::lock_guard<std::mutex> lock(transfer_mutex_);
 
-	unsigned int value = readRegister(address);
-	/*unsigned int value =
+	//unsigned int value = readRegister(address);
+	unsigned int value =
 			(static_cast<unsigned int>(readRegister(address)) << 24)
 			| (static_cast<unsigned int>(readRegister(address+1)) << 16)
 			| (static_cast<unsigned int>(readRegister(address+2)) << 8)
-			| (static_cast<unsigned int>(readRegister(address+3)));*/
+			| (static_cast<unsigned int>(readRegister(address+3)));
+
+	std::cout << (static_cast<unsigned int>(readRegister(address)) << 24) << std::endl;
+	std::cout << (static_cast<unsigned int>(readRegister(address+1)) << 16) << std::endl;
+	std::cout << (static_cast<unsigned int>(readRegister(address+2)) << 8) <<std::endl;
+	std::cout << static_cast<unsigned int>(readRegister(address+3)) <<std::endl;
+
+	std::cout << value<< std::endl;
 
 	return value;
 }
@@ -275,11 +282,11 @@ void Wallaby::writeRegister32b(unsigned char address, unsigned int value)
 
 	std::lock_guard<std::mutex> lock(transfer_mutex_);
 
-	updateRegister(address, value);
-	/*updateRegister(address  , static_cast<unsigned char>((value & 0xFF000000) >> 24));
+	//updateRegister(address, value);
+	updateRegister(address  , static_cast<unsigned char>((value & 0xFF000000) >> 24));
 	updateRegister(address+1, static_cast<unsigned char>((value & 0x00FF0000) >> 16));
 	updateRegister(address+2, static_cast<unsigned char>((value & 0x0000FF00) >> 8));
-	updateRegister(address+3, static_cast<unsigned char>((value & 0x000000FF)));*/
+	updateRegister(address+3, static_cast<unsigned char>((value & 0x000000FF)));
 	
 }
 
