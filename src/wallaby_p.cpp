@@ -270,7 +270,6 @@ unsigned int Wallaby::readRegister32b(unsigned char address, const unsigned char
 	std::cout << (static_cast<unsigned int>(readRegister(address+1)) << 16) << std::endl;
 	std::cout << (static_cast<unsigned int>(readRegister(address+2)) << 8) <<std::endl;
 	std::cout << static_cast<unsigned int>(readRegister(address+3)) <<std::endl;
-
 	std::cout << value<< std::endl;
 
 	return value;
